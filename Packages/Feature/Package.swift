@@ -31,7 +31,7 @@ let package = Package(
         .target(name: "TestHelpers", path: "Tests/TestHelpers"),
         
         // Features
-        .target(name: "Survey", dependencies: ["Models", "HTTPClient"]),
+        .target(name: "Survey", dependencies: ["Models", "HTTPClient", "Shared"]),
         .target(name: "Home", dependencies: ["Models", "HTTPClient"]),
         .target(name: "App", dependencies: ["Home", "Survey"]),
         

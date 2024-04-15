@@ -1,4 +1,5 @@
 import SwiftUI
+import Shared
 
 struct QuestionView: View {
     @ObservedObject var viewModel: QuestionViewModel
@@ -54,6 +55,28 @@ struct QuestionView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
+        .banner(
+            isPresented: Binding(get: {
+                viewModel.viewState == .success
+            }, set: { _ in
+                viewModel.viewState = .idle
+            }),
+            kind: .success,
+            title: "Success!"
+        )
+        .banner(
+            isPresented: Binding(get: {
+                viewModel.viewState == .failure
+            }, set: { _ in
+                viewModel.viewState = .idle
+            }),
+            kind: .failure,
+            title: "Failure....") {
+                
+            Task {
+                await viewModel.submitAnswer()
+            }
+        }
     }
 }
 
