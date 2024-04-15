@@ -6,10 +6,10 @@ import PackageDescription
 let package = Package(
     name: "Feature",
     products: [
-        .library(name: "Feature", targets: ["Feature"]),
+        .library(name: "HTTPClient", targets: ["HTTPClient"]),
     ],
     targets: [
-        .target(name: "Feature"),
-        .testTarget(name: "FeatureTests", dependencies: ["Feature"]),
+        .target(name: "HTTPClient"),
+        //.testTarget(name: "FeatureTests", dependencies: ["Feature"]),
     ]
 )
