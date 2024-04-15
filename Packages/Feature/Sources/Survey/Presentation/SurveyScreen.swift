@@ -1,63 +1,94 @@
 import SwiftUI
 
-struct SurveyScreen: View {
-    var body: some View {
+public struct SurveyScreen: View {
+    @ObservedObject var viewModel: SurveyViewModel
+    
+    public init(viewModel: SurveyViewModel) {
+        self.viewModel = viewModel
+    }
+    
+    public var body: some View {
+        switch viewModel.viewState {
+        case .ready:
+            content(with: viewModel.survey)
+            
+        case .loading:
+            ProgressView {
+                Text("Fetching...")
+            }
+            .task {
+                await viewModel.startSurvey()
+            }
+        case .error(let error):
+            Text(error)
+        }
+    }
+    
+    private func content(with survey: [QuestionViewModel]) -> some View {
         VStack {
-            Text("Title")
+            Text(viewModel.numberOfSubmittedTitle)
                 .padding()
                 .frame(maxWidth: .infinity)
                 .font(.callout)
             
-            TabView {
-                ForEach(0...10, id: \.self) { question in
-                    QuestionView()
+            TabView(selection: $viewModel.index) {
+                ForEach(survey, id: \.question.id) { question in
+                    QuestionView(
+                        viewModel: question
+                    )
                     .highPriorityGesture(DragGesture())
                 }
             }
-            #if os(iOS)
-            .tabViewStyle(.page(indexDisplayMode: .never))
-            #endif
         }
         #if os(iOS)
         .tabViewStyle(.page)
         #endif
+        .animation(.easeInOut, value: viewModel.index)
         .toolbar {
             #if os(iOS)
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    // Previous
+                    viewModel.previousQuestion()
                 } label: {
                     Text("Previous")
                 }
+                .disabled(viewModel.startOfQuestion)
+                .accessibilityIdentifier("PreviousQuestionButton")
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    // Next
+                    viewModel.nextQuestion()
                 } label: {
                     Text("Next")
                 }
+                .disabled(viewModel.endOfQuestion)
+                .accessibilityIdentifier("NextQuestionButton")
             }
             #elseif os(macOS)
-            ToolbarItem(placement: .automatic) {
+            ToolbarItem(placement: .primaryAction) {
                 Button {
-                    // Previous
+                    viewModel.previousQuestion()
                 } label: {
                     Text("Previous")
                 }
+                .disabled(viewModel.startOfQuestion)
+                .accessibilityIdentifier("PreviousQuestionButton")
             }
-            ToolbarItem(placement: .automatic) {
+            ToolbarItem(placement: .primaryAction) {
                 Button {
-                    // Next
+                    viewModel.nextQuestion()
                 } label: {
                     Text("Next")
                 }
+                .disabled(viewModel.endOfQuestion)
+                .accessibilityIdentifier("NextQuestionButton")
             }
             #endif
         }
-        .navigationTitle("Question 1/10")
+        .navigationTitle(viewModel.screenTitle)
     }
 }
 
 #Preview {
-    SurveyScreen()
+    SurveyScreen(viewModel: .init(dataSource: MockSurveyDataSource()))
 }

@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import App
 
 @main
 struct XMSurveyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppScreen()
         }
     }
 }

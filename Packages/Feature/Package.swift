@@ -17,6 +17,8 @@ let package = Package(
         
         // Features
         .library(name: "Survey", targets: ["Survey"]),
+        .library(name: "Home", targets: ["Home"]),
+        .library(name: "App", targets: ["App"]),
         
         // Test
         .library(name: "TestHelpers", targets: ["TestHelpers"]),
@@ -30,6 +32,8 @@ let package = Package(
         
         // Features
         .target(name: "Survey", dependencies: ["Models", "HTTPClient"]),
+        .target(name: "Home", dependencies: ["Models", "HTTPClient"]),
+        .target(name: "App", dependencies: ["Home", "Survey"]),
         
         
         
