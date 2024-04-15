@@ -45,6 +45,7 @@
 		D2A3E6252BCDD0DF00F2416F /* XMSurveyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XMSurveyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A3E6292BCDD0DF00F2416F /* XMSurveyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMSurveyUITests.swift; sourceTree = "<group>"; };
 		D2A3E62B2BCDD0DF00F2416F /* XMSurveyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMSurveyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D2A3E63A2BCDD1E300F2416F /* Feature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Feature; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +134,7 @@
 		D2A3E6382BCDD11400F2416F /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				D2A3E63A2BCDD1E300F2416F /* Feature */,
 			);
 			path = Packages;
 			sourceTree = "<group>";
