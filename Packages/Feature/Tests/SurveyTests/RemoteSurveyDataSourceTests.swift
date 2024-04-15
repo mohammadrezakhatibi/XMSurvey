@@ -17,6 +17,16 @@ final class RemoteSurveyDataSourceTests: XCTestCase {
         XCTAssertEqual(client.urls, [SurveyEndPoints.list.url])
     }
     
+    func test_start_deliversErrorOnHTPPClientFailure() async {
+        let (sut, _) = makeSUT(result: .failure(anyError()))
+        let result = await sut.start()
+        if case .failure(let error) = result {
+            XCTAssertEqual(error as? RemoteSurveyDataSource.Error, .server)
+        } else {
+            XCTFail("Expected failure, got success")
+        }
+    }
+    
     // MARK: Helpers
     
     private func makeSUT(

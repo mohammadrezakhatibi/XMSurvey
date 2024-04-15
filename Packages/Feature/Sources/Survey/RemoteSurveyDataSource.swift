@@ -3,6 +3,10 @@ import Models
 import HTTPClient
 
 public final class RemoteSurveyDataSource: SurveyDataSource {
+    public enum Error: Swift.Error {
+        case server
+    }
+    
     private let client: HTTPClient
     
     public init(client: HTTPClient) {
@@ -10,8 +14,8 @@ public final class RemoteSurveyDataSource: SurveyDataSource {
     }
     
     
-    public func start() async -> Result<Survey, Error> {
+    public func start() async -> Result<Survey, Swift.Error> {
         _ = await client.get(url: SurveyEndPoints.list.url)
-        return .success(.example)
+        return .failure(Error.server)
     }
 }
