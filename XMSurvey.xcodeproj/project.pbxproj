@@ -75,6 +75,7 @@
 		D2A3E6012BCDD0DE00F2416F = {
 			isa = PBXGroup;
 			children = (
+				D2A3E6382BCDD11400F2416F /* Packages */,
 				D2A3E60C2BCDD0DE00F2416F /* XMSurvey */,
 				D2A3E61E2BCDD0DF00F2416F /* XMSurveyTests */,
 				D2A3E6282BCDD0DF00F2416F /* XMSurveyUITests */,
@@ -127,6 +128,13 @@
 				D2A3E62B2BCDD0DF00F2416F /* XMSurveyUITestsLaunchTests.swift */,
 			);
 			path = XMSurveyUITests;
+			sourceTree = "<group>";
+		};
+		D2A3E6382BCDD11400F2416F /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Packages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
