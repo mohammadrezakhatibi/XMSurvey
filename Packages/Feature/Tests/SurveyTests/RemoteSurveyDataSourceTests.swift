@@ -27,6 +27,17 @@ final class RemoteSurveyDataSourceTests: XCTestCase {
         }
     }
     
+    func test_start_deliversErrorOnInvalidData() async {
+        let (sut, _) = makeSUT(result: .success((anyData(), successHTTPResponse())))
+        let result = await sut.start()
+        
+        if case .failure(let error) = result {
+            XCTAssertEqual(error as? RemoteSurveyDataSource.Error, .decoding)
+        } else {
+            XCTFail("Expected failure, got success")
+        }
+    }
+    
     // MARK: Helpers
     
     private func makeSUT(
