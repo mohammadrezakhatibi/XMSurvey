@@ -11,6 +11,7 @@ public final class RemoteSurveyDataSource: SurveyDataSource {
     
     
     public func start() async -> Result<Survey, Error> {
+        _ = await client.get(url: SurveyEndPoints.list.url)
         return .success(.example)
     }
 }

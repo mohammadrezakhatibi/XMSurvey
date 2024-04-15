@@ -9,6 +9,14 @@ final class RemoteSurveyDataSourceTests: XCTestCase {
         XCTAssertEqual(client.urls, [])
     }
     
+    func test_start_requestsSurvey() async {
+        let (sut, client) = makeSUT()
+        
+        _ = await sut.start()
+        
+        XCTAssertEqual(client.urls, [SurveyEndPoints.list.url])
+    }
+    
     // MARK: Helpers
     
     private func makeSUT(
