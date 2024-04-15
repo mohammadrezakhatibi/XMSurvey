@@ -59,6 +59,15 @@ final class RemoteSurveyDataSourceTests: XCTestCase {
         XCTAssertEqual(client.urls, [SurveyEndPoints.submit.url])
     }
     
+    func test_submit_successful() async {
+        let (sut, _) = makeSUT(result: .success((makeSurveyJSON(), successHTTPResponse())))
+        let result = await sut.submit(answer: Answer(id: 1, answer: "Answer"))
+
+        if case .failure(_) = result {
+            XCTFail("Expected success, got failure")
+        }
+    }
+    
     // MARK: Helpers
     
     private func makeSUT(
