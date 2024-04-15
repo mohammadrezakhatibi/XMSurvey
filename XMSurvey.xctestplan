@@ -1,0 +1,31 @@
+{
+  "configurations" : [
+    {
+      "id" : "AB1C2FA3-4D91-42E7-987B-4AC59D488BD4",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/Feature",
+        "identifier" : "SurveyTests",
+        "name" : "SurveyTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:XMSurvey.xcodeproj",
+        "identifier" : "D2A3E6242BCDD0DF00F2416F",
+        "name" : "XMSurveyUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
