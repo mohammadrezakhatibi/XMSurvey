@@ -36,6 +36,9 @@ final class RemoteSurveyDataSourceTests: XCTestCase {
     ) -> (sut: RemoteSurveyDataSource, client: HTTPClientSpy) {
         let client = HTTPClientSpy(result: result)
         let sut = RemoteSurveyDataSource(client: client)
+        
+        trackForMemoryLeaks(client)
+        trackForMemoryLeaks(sut)
         return (sut, client)
     }
     
