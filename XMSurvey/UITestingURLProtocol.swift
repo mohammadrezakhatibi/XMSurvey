@@ -49,7 +49,7 @@ public final class UITestingNetworkHandler {
             
             switch (url.host, url.path) {
             case ("xm-assignment.web.app", "/questions"):
-                guard let path = Bundle.main.url(forResource: "testData", withExtension: "json") else {
+                guard let path = Bundle.main.url(forResource: "testJSON", withExtension: "json") else {
                     fatalError("file not exist")
                 }
                 guard let data = try? Data(contentsOf: path, options: .alwaysMapped) else {
