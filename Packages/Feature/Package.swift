@@ -25,7 +25,7 @@ let package = Package(
         .target(name: "Shared"),
         
         // Features
-        .target(name: "Survey"),
+        .target(name: "Survey", dependencies: ["Models", "HTTPClient"]),
         
         .testTarget(name: "SurveyTests", dependencies: ["Survey"]),
     ]
