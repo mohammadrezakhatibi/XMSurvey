@@ -26,6 +26,7 @@ let package = Package(
         
         // Features
         .target(name: "Survey"),
-        //.testTarget(name: "FeatureTests", dependencies: ["Feature"]),
+        
+        .testTarget(name: "SurveyTests", dependencies: ["Survey"]),
     ]
 )
