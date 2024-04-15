@@ -13,10 +13,12 @@ let package = Package(
         // Core
         .library(name: "HTTPClient", targets: ["HTTPClient"]),
         .library(name: "Models", targets: ["Models"]),
+        .library(name: "Shared", targets: ["Shared"]),
     ],
     targets: [
         .target(name: "HTTPClient"),
         .target(name: "Models"),
+        .target(name: "Shared"),
         //.testTarget(name: "FeatureTests", dependencies: ["Feature"]),
     ]
 )
