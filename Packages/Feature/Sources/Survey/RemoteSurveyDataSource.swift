@@ -18,7 +18,14 @@ public final class RemoteSurveyDataSource: SurveyDataSource {
     public func start() async -> Result<Survey, Swift.Error> {
         let result = await client.get(url: SurveyEndPoints.list.url)
         if case .success(let (data, response)) = result {
-            return .failure(Error.decoding)
+            do {
+                guard let survey = try? SurveyDataMapper.map(data, from: response) else {
+                    throw Error.decoding
+                }
+                return .success(survey)
+            } catch {
+                return .failure(Error.decoding)
+            }
         }
         return .failure(Error.server)
     }

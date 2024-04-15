@@ -38,6 +38,19 @@ final class RemoteSurveyDataSourceTests: XCTestCase {
         }
     }
     
+    func test_start_deliversSurveyOn200SuccessfulHPPTClient() async {
+        let (sut, _) = makeSUT(result: .success((makeSurveyJSON(), successHTTPResponse())))
+        
+        let result = await sut.start()
+        
+        if case .success(let survey) = result {
+            XCTAssertEqual(survey.questions.first?.id, 1)
+            XCTAssertEqual(survey.questions.first?.question, "Test Question 1")
+        } else {
+            XCTFail("Expected success, got failure")
+        }
+    }
+    
     // MARK: Helpers
     
     private func makeSUT(
@@ -70,5 +83,21 @@ final class RemoteSurveyDataSourceTests: XCTestCase {
             urls.append(url)
             return result
         }
+    }
+    
+    private func makeSurveyJSON() -> Foundation.Data {
+        let json = [
+            [
+                "id": 1,
+                "question": "Test Question 1"
+            ],
+            [
+                "id": 2,
+                "question": "What is your favourite food?"
+            ]
+        ]
+    
+        
+        return try! JSONSerialization.data(withJSONObject: json)
     }
 }
