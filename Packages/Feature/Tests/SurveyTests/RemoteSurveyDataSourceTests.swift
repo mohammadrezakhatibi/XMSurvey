@@ -2,6 +2,7 @@ import XCTest
 import Survey
 import HTTPClient
 import TestHelpers
+import Models
 
 final class RemoteSurveyDataSourceTests: XCTestCase {
     func test_dataSource_doseNotRequestOnInstantiation(){
@@ -49,6 +50,13 @@ final class RemoteSurveyDataSourceTests: XCTestCase {
         } else {
             XCTFail("Expected success, got failure")
         }
+    }
+    
+    func test_submit_callsSubmit() async {
+        let (sut, client) = makeSUT()
+        _ = await sut.submit(answer: Answer(id: 1, answer: "Answer"))
+
+        XCTAssertEqual(client.urls, [SurveyEndPoints.submit.url])
     }
     
     // MARK: Helpers
