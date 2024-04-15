@@ -10,20 +10,14 @@
 		D2A3E60E2BCDD0DE00F2416F /* XMSurveyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3E60D2BCDD0DE00F2416F /* XMSurveyApp.swift */; };
 		D2A3E6122BCDD0DF00F2416F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A3E6112BCDD0DF00F2416F /* Assets.xcassets */; };
 		D2A3E6162BCDD0DF00F2416F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A3E6152BCDD0DF00F2416F /* Preview Assets.xcassets */; };
-		D2A3E6202BCDD0DF00F2416F /* XMSurveyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3E61F2BCDD0DF00F2416F /* XMSurveyTests.swift */; };
 		D2A3E62A2BCDD0DF00F2416F /* XMSurveyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3E6292BCDD0DF00F2416F /* XMSurveyUITests.swift */; };
 		D2A3E62C2BCDD0DF00F2416F /* XMSurveyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3E62B2BCDD0DF00F2416F /* XMSurveyUITestsLaunchTests.swift */; };
 		D2A3E63D2BCDE65900F2416F /* App in Frameworks */ = {isa = PBXBuildFile; productRef = D2A3E63C2BCDE65900F2416F /* App */; };
+		D2A3E63F2BCDE99400F2416F /* UITestingURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3E63E2BCDE99400F2416F /* UITestingURLProtocol.swift */; };
+		D2A3E6412BCDE9AF00F2416F /* testJSON.json in Sources */ = {isa = PBXBuildFile; fileRef = D2A3E6402BCDE9AF00F2416F /* testJSON.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D2A3E61C2BCDD0DF00F2416F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D2A3E6022BCDD0DE00F2416F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D2A3E6092BCDD0DE00F2416F;
-			remoteInfo = XMSurvey;
-		};
 		D2A3E6262BCDD0DF00F2416F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D2A3E6022BCDD0DE00F2416F /* Project object */;
@@ -39,12 +33,12 @@
 		D2A3E6112BCDD0DF00F2416F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2A3E6132BCDD0DF00F2416F /* XMSurvey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XMSurvey.entitlements; sourceTree = "<group>"; };
 		D2A3E6152BCDD0DF00F2416F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D2A3E61B2BCDD0DF00F2416F /* XMSurveyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XMSurveyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D2A3E61F2BCDD0DF00F2416F /* XMSurveyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMSurveyTests.swift; sourceTree = "<group>"; };
 		D2A3E6252BCDD0DF00F2416F /* XMSurveyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XMSurveyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A3E6292BCDD0DF00F2416F /* XMSurveyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMSurveyUITests.swift; sourceTree = "<group>"; };
 		D2A3E62B2BCDD0DF00F2416F /* XMSurveyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMSurveyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D2A3E63A2BCDD1E300F2416F /* Feature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Feature; sourceTree = "<group>"; };
+		D2A3E63E2BCDE99400F2416F /* UITestingURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestingURLProtocol.swift; sourceTree = "<group>"; };
+		D2A3E6402BCDE9AF00F2416F /* testJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testJSON.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,13 +47,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2A3E63D2BCDE65900F2416F /* App in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D2A3E6182BCDD0DF00F2416F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,7 +65,6 @@
 			children = (
 				D2A3E6382BCDD11400F2416F /* Packages */,
 				D2A3E60C2BCDD0DE00F2416F /* XMSurvey */,
-				D2A3E61E2BCDD0DF00F2416F /* XMSurveyTests */,
 				D2A3E6282BCDD0DF00F2416F /* XMSurveyUITests */,
 				D2A3E60B2BCDD0DE00F2416F /* Products */,
 				D2A3E63B2BCDE65900F2416F /* Frameworks */,
@@ -89,7 +75,6 @@
 			isa = PBXGroup;
 			children = (
 				D2A3E60A2BCDD0DE00F2416F /* XMSurvey.app */,
-				D2A3E61B2BCDD0DF00F2416F /* XMSurveyTests.xctest */,
 				D2A3E6252BCDD0DF00F2416F /* XMSurveyUITests.xctest */,
 			);
 			name = Products;
@@ -99,9 +84,11 @@
 			isa = PBXGroup;
 			children = (
 				D2A3E60D2BCDD0DE00F2416F /* XMSurveyApp.swift */,
+				D2A3E63E2BCDE99400F2416F /* UITestingURLProtocol.swift */,
 				D2A3E6112BCDD0DF00F2416F /* Assets.xcassets */,
 				D2A3E6132BCDD0DF00F2416F /* XMSurvey.entitlements */,
 				D2A3E6142BCDD0DF00F2416F /* Preview Content */,
+				D2A3E6402BCDE9AF00F2416F /* testJSON.json */,
 			);
 			path = XMSurvey;
 			sourceTree = "<group>";
@@ -112,14 +99,6 @@
 				D2A3E6152BCDD0DF00F2416F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		D2A3E61E2BCDD0DF00F2416F /* XMSurveyTests */ = {
-			isa = PBXGroup;
-			children = (
-				D2A3E61F2BCDD0DF00F2416F /* XMSurveyTests.swift */,
-			);
-			path = XMSurveyTests;
 			sourceTree = "<group>";
 		};
 		D2A3E6282BCDD0DF00F2416F /* XMSurveyUITests */ = {
@@ -169,24 +148,6 @@
 			productReference = D2A3E60A2BCDD0DE00F2416F /* XMSurvey.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D2A3E61A2BCDD0DF00F2416F /* XMSurveyTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D2A3E6322BCDD0DF00F2416F /* Build configuration list for PBXNativeTarget "XMSurveyTests" */;
-			buildPhases = (
-				D2A3E6172BCDD0DF00F2416F /* Sources */,
-				D2A3E6182BCDD0DF00F2416F /* Frameworks */,
-				D2A3E6192BCDD0DF00F2416F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D2A3E61D2BCDD0DF00F2416F /* PBXTargetDependency */,
-			);
-			name = XMSurveyTests;
-			productName = XMSurveyTests;
-			productReference = D2A3E61B2BCDD0DF00F2416F /* XMSurveyTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		D2A3E6242BCDD0DF00F2416F /* XMSurveyUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2A3E6352BCDD0DF00F2416F /* Build configuration list for PBXNativeTarget "XMSurveyUITests" */;
@@ -218,10 +179,6 @@
 					D2A3E6092BCDD0DE00F2416F = {
 						CreatedOnToolsVersion = 15.2;
 					};
-					D2A3E61A2BCDD0DF00F2416F = {
-						CreatedOnToolsVersion = 15.2;
-						TestTargetID = D2A3E6092BCDD0DE00F2416F;
-					};
 					D2A3E6242BCDD0DF00F2416F = {
 						CreatedOnToolsVersion = 15.2;
 						TestTargetID = D2A3E6092BCDD0DE00F2416F;
@@ -242,7 +199,6 @@
 			projectRoot = "";
 			targets = (
 				D2A3E6092BCDD0DE00F2416F /* XMSurvey */,
-				D2A3E61A2BCDD0DF00F2416F /* XMSurveyTests */,
 				D2A3E6242BCDD0DF00F2416F /* XMSurveyUITests */,
 			);
 		};
@@ -255,13 +211,6 @@
 			files = (
 				D2A3E6162BCDD0DF00F2416F /* Preview Assets.xcassets in Resources */,
 				D2A3E6122BCDD0DF00F2416F /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D2A3E6192BCDD0DF00F2416F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,14 +229,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2A3E60E2BCDD0DE00F2416F /* XMSurveyApp.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D2A3E6172BCDD0DF00F2416F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D2A3E6202BCDD0DF00F2416F /* XMSurveyTests.swift in Sources */,
+				D2A3E6412BCDE9AF00F2416F /* testJSON.json in Sources */,
+				D2A3E63F2BCDE99400F2416F /* UITestingURLProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,11 +246,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D2A3E61D2BCDD0DF00F2416F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D2A3E6092BCDD0DE00F2416F /* XMSurvey */;
-			targetProxy = D2A3E61C2BCDD0DF00F2416F /* PBXContainerItemProxy */;
-		};
 		D2A3E6272BCDD0DF00F2416F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D2A3E6092BCDD0DE00F2416F /* XMSurvey */;
@@ -502,50 +440,6 @@
 			};
 			name = Release;
 		};
-		D2A3E6332BCDD0DF00F2416F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
-				MACOSX_DEPLOYMENT_TARGET = 14.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.mohammadreza.XMSurveyTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XMSurvey.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/XMSurvey";
-			};
-			name = Debug;
-		};
-		D2A3E6342BCDD0DF00F2416F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
-				MACOSX_DEPLOYMENT_TARGET = 14.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.mohammadreza.XMSurveyTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XMSurvey.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/XMSurvey";
-			};
-			name = Release;
-		};
 		D2A3E6362BCDD0DF00F2416F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -605,15 +499,6 @@
 			buildConfigurations = (
 				D2A3E6302BCDD0DF00F2416F /* Debug */,
 				D2A3E6312BCDD0DF00F2416F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D2A3E6322BCDD0DF00F2416F /* Build configuration list for PBXNativeTarget "XMSurveyTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D2A3E6332BCDD0DF00F2416F /* Debug */,
-				D2A3E6342BCDD0DF00F2416F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
