@@ -31,7 +31,10 @@ public final class RemoteSurveyDataSource: SurveyDataSource {
     }
     
     public func submit(answer: Answer) async -> Result<EmptyResponse, Swift.Error> {
-        _ = await client.post(url: SurveyEndPoints.submit.url, body: answer)
-        return .success(EmptyResponse())
+        let result = await client.post(url: SurveyEndPoints.submit.url, body: answer)
+        if case .success(_) = result {
+            return .success(EmptyResponse())
+        }
+        return .failure(Error.server)
     }
 }
