@@ -17,16 +17,22 @@ let package = Package(
         
         // Features
         .library(name: "Survey", targets: ["Survey"]),
+        
+        // Test
+        .library(name: "TestHelpers", targets: ["TestHelpers"]),
     ],
     targets: [
         // Core
         .target(name: "HTTPClient"),
         .target(name: "Models"),
         .target(name: "Shared"),
+        .target(name: "TestHelpers", path: "Tests/TestHelpers"),
         
         // Features
         .target(name: "Survey", dependencies: ["Models", "HTTPClient"]),
         
-        .testTarget(name: "SurveyTests", dependencies: ["Survey"]),
+        
+        
+        .testTarget(name: "SurveyTests", dependencies: ["Survey", "TestHelpers"]),
     ]
 )
