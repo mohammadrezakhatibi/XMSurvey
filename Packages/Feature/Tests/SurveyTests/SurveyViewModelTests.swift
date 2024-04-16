@@ -47,6 +47,23 @@ final class SurveyViewModelTests: XCTestCase {
         )
     }
     
+    func test_changeQuestion_changeCurrentIndex() {
+        let expectedSurvey = Survey(
+            questions: [
+                .example,
+                .example,
+            ]
+        )
+        let (sut, _) = makeSUT(result: .success(expectedSurvey))
+        
+        sut.nextQuestion()
+        
+        XCTAssertEqual(sut.index, 2)
+        
+        sut.previousQuestion()
+        XCTAssertEqual(sut.index, 1)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(
