@@ -40,6 +40,29 @@ final class QuestionViewModelTests: XCTestCase {
         )
     }
     
+    func test_error_whenStartSurveyFailed() async {
+        let anyError = NSError(domain: "", code: 0)
+        let (sut, dataSource) = makeSUT(result: .failure(anyError))
+        let expectedAnswer = "Answer"
+        
+        sut.answer = expectedAnswer
+        
+        await sut.submitAnswer()
+        
+        XCTAssertEqual(dataSource.answerRequests, [
+            Answer(id: 1, answer: expectedAnswer),
+        ])
+        XCTAssertEqual(sut.submitDisabled, false)
+        XCTAssertEqual(sut.question.answer, nil)
+        XCTAssertEqual(sut.question.hasAnswer, false)
+        
+        expect(
+            sut,
+            toCompleteWith: .failure(anyError)
+        )
+        
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(
@@ -79,4 +102,10 @@ final class QuestionViewModelTests: XCTestCase {
         }
     }
     
+}
+
+extension Answer: Equatable {
+    public static func == (lhs: Answer, rhs: Answer) -> Bool {
+        lhs.id == rhs.id && lhs.answer == rhs.answer
+    }
 }
