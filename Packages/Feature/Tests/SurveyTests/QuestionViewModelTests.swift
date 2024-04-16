@@ -23,6 +23,23 @@ final class QuestionViewModelTests: XCTestCase {
         XCTAssertEqual(sut.viewState, .idle)
     }
     
+    func test_ready_whenStartSurveySucceed() async {
+        let (sut, _) = makeSUT(result: .success(EmptyResponse()))
+        let expectedAnswer = "Answer"
+        
+        sut.answer = expectedAnswer
+        await sut.submitAnswer()
+        
+        XCTAssertEqual(sut.submitDisabled, true)
+        XCTAssertEqual(sut.question.answer, expectedAnswer)
+        XCTAssertEqual(sut.question.hasAnswer, true)
+        
+        expect(
+            sut,
+            toCompleteWith: .success(EmptyResponse())
+        )
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(
@@ -41,6 +58,25 @@ final class QuestionViewModelTests: XCTestCase {
     
     private var endPoint: URL {
         return SurveyEndPoints.submit.url
+    }
+    
+    private func expect(
+        _ sut: QuestionViewModel,
+        toCompleteWith expectedResult: Result<EmptyResponse, Error>,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) {
+        
+        if case .success(_) = expectedResult {
+            XCTAssertEqual(
+                sut.viewState,
+                .success
+            )
+        } else if case .failure(_) = expectedResult {
+            XCTAssertEqual(sut.viewState, .failure)
+        } else {
+            XCTFail(file: file, line: line)
+        }
     }
     
 }
