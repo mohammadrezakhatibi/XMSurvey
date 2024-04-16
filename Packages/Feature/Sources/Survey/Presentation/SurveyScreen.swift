@@ -1,4 +1,5 @@
 import SwiftUI
+import Shared
 
 public struct SurveyScreen: View {
     @ObservedObject var viewModel: SurveyViewModel
@@ -20,7 +21,15 @@ public struct SurveyScreen: View {
                 await viewModel.start()
             }
         case .error(let error):
-            Text(error)
+            ErrorView {
+                Text(error)
+            } buttonLabel: {
+                Text("Retry Fetching Survey")
+            } retryAction: {
+                Task {
+                    await viewModel.start()
+                }
+            }
         }
     }
     
