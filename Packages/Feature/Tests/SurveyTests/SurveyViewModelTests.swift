@@ -85,6 +85,17 @@ final class SurveyViewModelTests: XCTestCase {
         XCTAssertEqual(sut.screenTitle, "Questions 1/2")
     }
     
+    func test_failedSurvey_createEmptyQuestionViewModel() async {
+        let anyError = NSError(domain: "", code: 0)
+        
+        let (sut, _) = makeSUT(result: .failure(anyError))
+        
+        // Get Survey's Questions
+        await sut.start()
+        
+        XCTAssertTrue(sut.survey.isEmpty)
+    }
+    
     func test_start_createQuestionViewModel() async {
         let expectedSurvey = Survey(
             questions: [.example(), .example(id: 2), .example(id: 3)]
