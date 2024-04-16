@@ -12,7 +12,6 @@
 		D2A3E6162BCDD0DF00F2416F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A3E6152BCDD0DF00F2416F /* Preview Assets.xcassets */; };
 		D2A3E63D2BCDE65900F2416F /* App in Frameworks */ = {isa = PBXBuildFile; productRef = D2A3E63C2BCDE65900F2416F /* App */; };
 		D2A3E63F2BCDE99400F2416F /* UITestingURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3E63E2BCDE99400F2416F /* UITestingURLProtocol.swift */; };
-		D2A3E6412BCDE9AF00F2416F /* testJSON.json in Sources */ = {isa = PBXBuildFile; fileRef = D2A3E6402BCDE9AF00F2416F /* testJSON.json */; };
 		D2A3E6462BCDEA2800F2416F /* SurveyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3E6422BCDEA2800F2416F /* SurveyUITests.swift */; };
 		D2A3E6472BCDEA2800F2416F /* UITestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3E6432BCDEA2800F2416F /* UITestCase.swift */; };
 		D2A3E6482BCDEA2800F2416F /* XCUIElement+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A3E6452BCDEA2800F2416F /* XCUIElement+Extensions.swift */; };
@@ -42,7 +41,7 @@
 		D2A3E6422BCDEA2800F2416F /* SurveyUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyUITests.swift; sourceTree = "<group>"; };
 		D2A3E6432BCDEA2800F2416F /* UITestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITestCase.swift; sourceTree = "<group>"; };
 		D2A3E6452BCDEA2800F2416F /* XCUIElement+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCUIElement+Extensions.swift"; sourceTree = "<group>"; };
-		D2A3E64A2BCDEBFB00F2416F /* XMSurvey.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = file; path = XMSurvey.xctestplan; sourceTree = SOURCE_ROOT; };
+		D2A3E64A2BCDEBFB00F2416F /* XMSurvey.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = XMSurvey.xctestplan; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,7 +243,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2A3E60E2BCDD0DE00F2416F /* XMSurveyApp.swift in Sources */,
-				D2A3E6412BCDE9AF00F2416F /* testJSON.json in Sources */,
 				D2A3E63F2BCDE99400F2416F /* UITestingURLProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
