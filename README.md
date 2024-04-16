@@ -12,7 +12,7 @@ Here are the key points about the project:
 
 
 ## **Prject Structure**
-The `Feature` Swift package is the heart of the app implementation. It includes the Core and Feature implementations (You check the diagram). The Shared, HTTPClient, and Models are part of the Core and form the high-level layer. The App, Home and Survey belong to the Feature layer.
+The `Feature` Swift package is the heart of the app implementation. It includes the Core and Feature implementations (You check the diagram). The `Shared`, `HTTPClient`, and `Models` are part of the Core and form the high-level layer. The `App`, `Home` and `Survey` belong to the `Feature` layer.
 
 ## **Diagram**
 <img src="https://raw.githubusercontent.com/mohammadrezakhatibi/XMSurvey/develop/XMSurvey.png" width="700">
