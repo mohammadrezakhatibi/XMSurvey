@@ -45,10 +45,10 @@ public final class UITestingNetworkHandler {
         
         UITestingURLProtocol.responseProvider = { request in
             guard let url = request.url else { fatalError() }
-            let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)!
             
             switch (url.host, url.path) {
             case ("xm-assignment.web.app", "/questions"):
+                let response = response(for: url, failure: CommandLine.arguments.contains("failedSurvey"))
                 guard let path = Bundle.main.url(forResource: "testJSON", withExtension: "json") else {
                     fatalError("file not exist")
                 }
@@ -58,12 +58,22 @@ public final class UITestingNetworkHandler {
                 return .success(UITestingURLProtocol.ResponseData(response: response, data: data))
                 
             case ("xm-assignment.web.app", "/question/submit"):
-                return .success(UITestingURLProtocol.ResponseData(response: HTTPURLResponse(), data: Data()))
+                let response = response(for: url, failure: CommandLine.arguments.contains("failedSubmit"))
+                return .success(UITestingURLProtocol.ResponseData(response: response, data: Data()))
 
             default:
                 fatalError("Unhandled path")
             }
             fatalError("Unhandled path")
         }
+    }
+    
+    private static func response(for url: URL, failure: Bool) -> HTTPURLResponse {
+        HTTPURLResponse(
+            url: url,
+            statusCode: failure ? 400 : 200,
+            httpVersion: nil,
+            headerFields: nil
+        )!
     }
 }

@@ -17,9 +17,10 @@ class UITestCase: XCTestCase {
         app = nil
     }
     
-    final func launchApp() {
+    final func launchApp(launchArguments: [String] = []) {
         XCTContext.runActivity(named: "App launching.") { _ in
             app.launchArguments = ["–uitesting"]
+            app.launchArguments.append(contentsOf: launchArguments)
             app.launch()
         }
     }

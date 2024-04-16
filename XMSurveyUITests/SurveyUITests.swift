@@ -44,8 +44,32 @@ final class SurveyUITests: UITestCase {
         XCTAssertFalse(app.buttons["Already Submitted"].firstMatch.assertExists(timeout: 2).isEnabled)
     }
     
-    private func launchSurvey() {
-        launchApp()
+    func test_fail_showErrorView() {
+        launchSurvey(launchArguments: ["failedSurvey"])
+        
+        app.otherElements["ErrorView"].firstMatch.assertExists(timeout: 2)
+    }
+    
+    func test_failureSubmit_showFailureBanner() {
+        launchSurvey(launchArguments: ["failedSubmit"])
+        
+        app.textViews.firstMatch.type("Answer")
+        app.buttons["SubmitButton"].firstMatch.assertExists(timeout: 2).tap()
+        
+        app.otherElements["Banner-failure"].firstMatch.assertExists(timeout: 1)
+    }
+    
+    func test_successSubmit_showSuccessBanner() {
+        launchSurvey()
+        
+        app.textViews.firstMatch.type("Answer")
+        app.buttons["SubmitButton"].firstMatch.assertExists(timeout: 2).tap()
+        
+        app.otherElements["Banner-success"].firstMatch.assertExists(timeout: 2)
+    }
+    
+    private func launchSurvey(launchArguments: [String] = []) {
+        launchApp(launchArguments: launchArguments)
         app.buttons["StartButton"].firstMatch.assertExists(timeout: 2).tap()
     }
 }

@@ -45,6 +45,8 @@ public struct ErrorView<Content>: View where Content: View {
             })
             .buttonStyle(.borderedProminent)
         }
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("ErrorView")
         .padding(.horizontal, 32)
     }
 }

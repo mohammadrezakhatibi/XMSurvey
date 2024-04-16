@@ -1,7 +1,7 @@
 import SwiftUI
 
 public struct Banner: ViewModifier {
-    public enum Kind {
+    public enum Kind: String {
         case success
         case failure
     }
@@ -61,13 +61,15 @@ public struct Banner: ViewModifier {
                 .cornerRadius(8)
                 .onAppear {
                     Task { @MainActor in
-                        try? await Task.sleep(for: .seconds(2))
+                        try? await Task.sleep(for: .seconds(3))
                         self.isPresented = false
                     }
                 }
                 .onTapGesture {
                     isPresented = false
                 }
+                .accessibilityElement(children: .contain)
+                .accessibilityIdentifier("Banner-\(kind.rawValue)")
             }
         }
     }
