@@ -27,6 +27,6 @@ public final class SurveyDataMapper {
     }
     
     private static func isOK(_ response: HTTPURLResponse) -> Bool {
-        200 == response.statusCode
+        response.statusCode == 200
     }
 }
