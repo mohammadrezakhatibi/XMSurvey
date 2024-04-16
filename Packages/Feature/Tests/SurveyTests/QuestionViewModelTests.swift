@@ -24,14 +24,23 @@ final class QuestionViewModelTests: XCTestCase {
     }
     
     func test_ready_whenStartSurveySucceed() async {
-        let (sut, _) = makeSUT(result: .success(EmptyResponse()))
+        let (sut, dataSource) = makeSUT(result: .success(EmptyResponse()))
         let expectedAnswer = "Answer"
         
         sut.answer = expectedAnswer
         await sut.submitAnswer()
         
+        
+        let expectedSecondAnswer = "Second Answer"
+        sut.answer = expectedSecondAnswer
+        
+        await sut.submitAnswer()
+        
+        XCTAssertEqual(dataSource.answerRequests, [
+            Answer(id: 1, answer: expectedAnswer),
+            Answer(id: 1, answer: expectedSecondAnswer)
+        ])
         XCTAssertEqual(sut.submitDisabled, true)
-        XCTAssertEqual(sut.question.answer, expectedAnswer)
         XCTAssertEqual(sut.question.hasAnswer, true)
         
         expect(
