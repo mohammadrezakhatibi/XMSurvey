@@ -14,7 +14,7 @@ public final class SurveyViewModel: ObservableObject {
     }
     
     @MainActor
-    public func startSurvey() async {
+    public func start() async {
         let result =  await dataSource.start()
         switch result {
         case .success(let survey):

@@ -17,7 +17,7 @@ public struct SurveyScreen: View {
                 Text("Fetching...")
             }
             .task {
-                await viewModel.startSurvey()
+                await viewModel.start()
             }
         case .error(let error):
             Text(error)
