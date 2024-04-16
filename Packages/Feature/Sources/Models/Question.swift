@@ -18,8 +18,8 @@ public struct Question: Decodable, Hashable {
 
 #if DEBUG
 public extension Question {
-    static var example: Question {
-        Question(id: 1, question: "What's your favourite food")
+    static func example(id: Int = 1) -> Question {
+        Question(id: id, question: "What's your favourite food")
     }
 }
 #endif

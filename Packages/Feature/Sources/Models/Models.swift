@@ -13,7 +13,7 @@ public struct Survey {
 #if DEBUG
 public extension Survey {
     static var example: Survey {
-        Survey(questions: [.example])
+        Survey(questions: [.example()])
     }
 }
 #endif

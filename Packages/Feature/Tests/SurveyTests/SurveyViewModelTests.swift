@@ -50,8 +50,8 @@ final class SurveyViewModelTests: XCTestCase {
     func test_changeQuestion_changeCurrentIndex() {
         let expectedSurvey = Survey(
             questions: [
-                .example,
-                .example,
+                .example(),
+                .example(id: 2),
             ]
         )
         let (sut, _) = makeSUT(result: .success(expectedSurvey))
@@ -62,6 +62,20 @@ final class SurveyViewModelTests: XCTestCase {
         
         sut.previousQuestion()
         XCTAssertEqual(sut.index, 1)
+    }
+    
+    func test_screenTitle() async {
+        let expectedSurvey = Survey(
+            questions: [
+                .example(),
+                .example(id: 2),
+            ]
+        )
+        let (sut, _) = makeSUT(result: .success(expectedSurvey))
+        
+        await sut.start()
+        
+        XCTAssertEqual(sut.screenTitle, "Questions 1/2")
     }
     
     // MARK: - Helpers

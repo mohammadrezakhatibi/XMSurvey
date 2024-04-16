@@ -85,7 +85,7 @@ struct QuestionView: View {
         QuestionView(
             viewModel: QuestionViewModel(
                 dataSource: MockSurveyDataSource(),
-                question: .example
+                question: .example()
             )
         )
     }
