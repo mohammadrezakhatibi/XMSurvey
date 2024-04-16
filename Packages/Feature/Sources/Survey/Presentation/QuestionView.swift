@@ -56,20 +56,20 @@ struct QuestionView: View {
         .navigationBarTitleDisplayMode(.inline)
         #endif
         .banner(
-            isPresented: Binding(get: {
+            isPresented: Binding {
                 viewModel.viewState == .success
-            }, set: { _ in
+            } set: { _ in
                 viewModel.viewState = .idle
-            }),
+            },
             kind: .success,
             title: "Success!"
         )
         .banner(
-            isPresented: Binding(get: {
+            isPresented: Binding {
                 viewModel.viewState == .failure
-            }, set: { _ in
+            } set: { _ in
                 viewModel.viewState = .idle
-            }),
+            },
             kind: .failure,
             title: "Failure....") {
                 
