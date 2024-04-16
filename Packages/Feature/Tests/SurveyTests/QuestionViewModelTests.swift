@@ -9,6 +9,14 @@ final class QuestionViewModelTests: XCTestCase {
         XCTAssertEqual(client.urls, [])
     }
     
+    func test_submitAnswer_sendsRequestForSubmit() async {
+        let (sut, repository) = makeSUT()
+        await sut.submitAnswer()
+        await sut.submitAnswer()
+        
+        XCTAssertEqual(repository.urls, [endPoint, endPoint])
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(
@@ -23,6 +31,10 @@ final class QuestionViewModelTests: XCTestCase {
         trackForMemoryLeaks(dataSource, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, dataSource)
+    }
+    
+    private var endPoint: URL {
+        return SurveyEndPoints.submit.url
     }
     
 }
