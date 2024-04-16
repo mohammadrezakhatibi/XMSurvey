@@ -71,9 +71,3 @@ final class SurveyDataMapperTests: XCTestCase {
         return try! JSONSerialization.data(withJSONObject: json)
     }
 }
-
-extension Survey: Equatable {
-    public static func == (lhs: Survey, rhs: Survey) -> Bool {
-        lhs.id == rhs.id
-    }
-}
