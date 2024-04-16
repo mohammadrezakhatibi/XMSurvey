@@ -35,6 +35,18 @@ final class SurveyViewModelTests: XCTestCase {
         )
     }
     
+    func test_stateReady_whenGetSurveySucceed() async {
+        let expectedSurvey = Survey(questions: [Question(id: 1, question: "Test Question")])
+        let (sut, _) = makeSUT(result: .success(expectedSurvey))
+        
+        await sut.start()
+        
+        expect(
+            sut,
+            toCompleteWith: .success(expectedSurvey)
+        )
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(
