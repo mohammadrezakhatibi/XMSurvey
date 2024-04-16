@@ -6,12 +6,27 @@
 //
 
 import SwiftUI
+import App
 
 @main
 struct XMSurveyApp: App {
+    #if os(iOS)
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    #endif
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppScreen()
         }
     }
 }
+
+#if os(iOS)
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        guard CommandLine.arguments.contains("–uitesting") else { return true }
+        UITestingNetworkHandler.register()
+        return true
+    }
+}
+#endif
