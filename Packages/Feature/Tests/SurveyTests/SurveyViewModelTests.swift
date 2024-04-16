@@ -23,6 +23,18 @@ final class SurveyViewModelTests: XCTestCase {
         XCTAssertEqual(sut.viewState, .loading)
     }
     
+    func test_stateError_whenGetSurveyFails() async {
+        let anyError = NSError(domain: "", code: 0)
+        let (sut, _) = makeSUT(result: .failure(anyError))
+        
+        await sut.start()
+        
+        expect(
+            sut,
+            toCompleteWith: .failure(anyError)
+        )
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(
@@ -40,6 +52,31 @@ final class SurveyViewModelTests: XCTestCase {
     
     private var endPoint: URL {
         return SurveyEndPoints.list.url
+    }
+    
+    private func expect(
+        _ sut: SurveyViewModel,
+        toCompleteWith expectedResult: Result<Survey, Error>,
+        when action: @escaping () -> Void = {},
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) {
+        action()
+        
+        if case .success(let viewData) = expectedResult {
+            XCTAssertEqual(
+                sut.viewState,
+                .ready(
+                    viewData.questions.map {
+                        QuestionViewModel(dataSource: MockSurveyDataSource(), question: $0)
+                    }
+                )
+            )
+        } else if case .failure(let error) = expectedResult {
+            XCTAssertEqual(sut.viewState, .error(error.localizedDescription))
+        } else {
+            XCTFail(file: file, line: line)
+        }
     }
 }
 
