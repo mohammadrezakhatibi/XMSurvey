@@ -17,6 +17,12 @@ final class SurveyViewModelTests: XCTestCase {
         XCTAssertEqual(repository.urls, [endPoint, endPoint])
     }
     
+    func test_stateLoading_onInstantiation() async {
+        let (sut, _) = makeSUT()
+        
+        XCTAssertEqual(sut.viewState, .loading)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(
@@ -34,5 +40,20 @@ final class SurveyViewModelTests: XCTestCase {
     
     private var endPoint: URL {
         return SurveyEndPoints.list.url
+    }
+}
+
+extension SurveyViewModel.ViewState: Equatable {
+    public static func == (lhs: SurveyViewModel.ViewState, rhs: SurveyViewModel.ViewState) -> Bool {
+        switch (lhs, rhs) {
+        case (.ready, .ready):
+            return true
+        case (.loading, .loading):
+            return true
+        case (.error(let lhsError), .error(let rhsError)):
+            return lhsError == rhsError
+        default:
+            return false
+        }
     }
 }
