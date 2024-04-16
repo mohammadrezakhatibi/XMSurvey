@@ -17,6 +17,12 @@ final class QuestionViewModelTests: XCTestCase {
         XCTAssertEqual(repository.urls, [endPoint, endPoint])
     }
     
+    func test_idleState_onInstantiation() async {
+        let (sut, _) = makeSUT()
+        
+        XCTAssertEqual(sut.viewState, .idle)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(
