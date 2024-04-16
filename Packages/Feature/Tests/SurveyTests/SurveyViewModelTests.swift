@@ -78,6 +78,21 @@ final class SurveyViewModelTests: XCTestCase {
         XCTAssertEqual(sut.screenTitle, "Questions 1/2")
     }
     
+    func test_start_createQuestionViewModel() async {
+        let expectedSurvey = Survey(
+            questions: [.example(), .example(id: 2), .example(id: 3)]
+        )
+        
+        let (sut, _) = makeSUT(result: .success(expectedSurvey))
+        
+        // Get Survey's Questions
+        await sut.start()
+        
+        expectedSurvey.questions.enumerated().forEach { index, question in
+            XCTAssertEqual(question, sut.survey[index].question)
+        }
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(
