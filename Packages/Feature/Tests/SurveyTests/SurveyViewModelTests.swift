@@ -1,8 +1,15 @@
 import XCTest
 import Models
 import Survey
+import Combine
 
 final class SurveyViewModelTests: XCTestCase {
+    private var cancellable: AnyCancellable?
+    
+    override func tearDown() {
+        cancellable = nil
+        super.tearDown()
+    }
     
     func test_viewModel_doseNotRequestOnInstantiation(){
         let (_, client) = makeSUT()
@@ -93,6 +100,27 @@ final class SurveyViewModelTests: XCTestCase {
         }
     }
     
+    func test_submitAnswer_changeNumberOfSubmittedTitle() async {
+        let expectedSurvey = Survey(
+            questions: [.example(), .example(id: 2)]
+        )
+        
+        let (sut, _) = makeSUT(result: .success(expectedSurvey))
+        
+        XCTAssertEqual(sut.numberOfSubmittedTitle, "Questions Submitted: 0")
+        
+        // Get Survey's Questions
+        await sut.start()
+        
+        // Submit first answer
+        await submitAnswer(for: sut.survey.first)
+        XCTAssertEqual(sut.numberOfSubmittedTitle, "Questions Submitted: 1")
+        
+        // Submit second answer
+        await submitAnswer(for: sut.survey.last)
+        XCTAssertEqual(sut.numberOfSubmittedTitle, "Questions Submitted: 2")
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(
@@ -135,6 +163,20 @@ final class SurveyViewModelTests: XCTestCase {
         } else {
             XCTFail(file: file, line: line)
         }
+    }
+    
+    private func submitAnswer(for viewModel: QuestionViewModel?) async {
+        viewModel?.answer = "Answer"
+        await viewModel?.submitAnswer()
+        
+        let exp = expectation(description: "Waiting for submitting answer")
+        
+        cancellable = viewModel?.$question
+            .sink { _ in
+                exp.fulfill()
+            }
+        
+        await fulfillment(of: [exp], timeout: 2)
     }
 }
 
