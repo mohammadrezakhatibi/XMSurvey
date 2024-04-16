@@ -6,6 +6,7 @@ public struct Banner: ViewModifier {
         case failure
     }
     
+    @State var dismissTask: Task<Void, Error>?
     @Binding var isPresented: Bool
     private let title: Text
     private let action: (() -> Void)?
@@ -43,6 +44,7 @@ public struct Banner: ViewModifier {
                 Spacer()
                 if action != nil {
                     Button {
+                        dismissTask?.cancel()
                         isPresented = false
                         action?()
                     } label: {
@@ -58,7 +60,7 @@ public struct Banner: ViewModifier {
             .transition(.opacity)
             .cornerRadius(8)
             .onAppear {
-                Task { @MainActor in
+                dismissTask = Task { @MainActor in
                     try? await Task.sleep(for: .seconds(2))
                     self.isPresented = false
                 }
